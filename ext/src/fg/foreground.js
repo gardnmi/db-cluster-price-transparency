@@ -68,7 +68,7 @@ function addCosts() {
 	}
 
 	var region = document.getElementById("region_select").value;
-	var url = `https://fast-dawn-89938.herokuapp.com/https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/${region}/Linux/index.json`;
+	var url = `https://corsanywhere.herokuapp.com/https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/${region}/Linux/index.json`;
 
 	fetch(url)
 		.then((res) => res.json())
