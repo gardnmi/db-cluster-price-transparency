@@ -46,16 +46,23 @@ function addCosts() {
 	var dbu = document.getElementsByClassName("webapp-css-1nlcg28")[0].textContent.split("-");
 	db_plan = document.getElementById("type_select").value;
 
-	var workers = document.getElementById("cluster-input--worker");
-
-	if (workers) {
-		workers = parseFloat(workers.value);
-	} else {
-		var minworkers = parseFloat(document.getElementById("cluster-input--min-worker").value);
-		var maxWorkers = parseFloat(document.getElementById("cluster-input--max-worker").value);
+	if (document.getElementsByClassName("worker-num fake-static-input")[0]) {
+		workers = parseFloat(document.getElementsByClassName("worker-num fake-static-input")[0].textContent);
 	}
 
-	parseFloat(document.getElementById("cluster-input--max-worker").value);
+	if (document.getElementsByClassName("min-worker fake-static-input")[0]) {
+		minWorkers = parseFloat(document.getElementsByClassName("min-worker fake-static-input")[0].textContent);
+		maxWorkers = parseFloat(document.getElementsByClassName("max-worker fake-static-input")[0].textContent);
+	}
+
+	if (document.getElementById("cluster-input--worker")) {
+		workers = parseFloat(document.getElementById("cluster-input--worker").value);
+	}
+
+	if (document.getElementById("cluster-input--min-worker")) {
+		var minWorkers = parseFloat(document.getElementById("cluster-input--min-worker").value);
+		var maxWorkers = parseFloat(document.getElementById("cluster-input--max-worker").value);
+	}
 
 	if (dbu.length === 2) {
 		var dbuFirst = parseFloat(dbu[0]);
@@ -99,7 +106,7 @@ function addCosts() {
 				driverInstancePrice = `$${driverInstanceRate.toFixed(2)}`;
 
 				if (dbu.length === 2) {
-					nodeInstancePrice = `$${(nodeInstanceRate * minworkers).toFixed(2)} - $${(nodeInstanceRate * maxWorkers).toFixed(2)}`;
+					nodeInstancePrice = `$${(nodeInstanceRate * minWorkers).toFixed(2)} - $${(nodeInstanceRate * maxWorkers).toFixed(2)}`;
 				} else {
 					nodeInstancePrice = `$${(nodeInstanceRate * workers).toFixed(2)}`;
 				}
@@ -113,7 +120,7 @@ function addCosts() {
 				driverInstancePrice = `$${driverInstanceRate.toFixed(2)}`;
 
 				if (dbu.length === 2) {
-					nodeInstancePrice = `$${(nodeInstanceRate * minworkers).toFixed(2)} - $${(nodeInstanceRate * maxWorkers).toFixed(2)}`;
+					nodeInstancePrice = `$${(nodeInstanceRate * minWorkers).toFixed(2)} - $${(nodeInstanceRate * maxWorkers).toFixed(2)}`;
 				} else {
 					nodeInstancePrice = `$${(nodeInstanceRate * workers).toFixed(2)}`;
 				}
