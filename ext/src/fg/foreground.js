@@ -46,6 +46,17 @@ function addCosts() {
 	var dbu = document.getElementsByClassName("webapp-css-1nlcg28")[0].textContent.split("-");
 	db_plan = document.getElementById("type_select").value;
 
+	var workers = document.getElementById("cluster-input--worker");
+
+	if (workers) {
+		workers = parseFloat(workers.value);
+	} else {
+		var minworkers = parseFloat(document.getElementById("cluster-input--min-worker").value);
+		var maxWorkers = parseFloat(document.getElementById("cluster-input--max-worker").value);
+	}
+
+	parseFloat(document.getElementById("cluster-input--max-worker").value);
+
 	if (dbu.length === 2) {
 		var dbuFirst = parseFloat(dbu[0]);
 		var dbuSecond = parseFloat(dbu[1].replace(",", ""));
@@ -85,12 +96,12 @@ function addCosts() {
 				var nodeInstanceRate = parseFloat(data[awsInstance[0].textContent]["price"]);
 				var driverInstanceRate = parseFloat(data[awsInstance[1].textContent]["price"]);
 
-				driverInstancePrice = `$${(driverInstanceRate * dbuFirst).toFixed(2)}`;
+				driverInstancePrice = `$${driverInstanceRate.toFixed(2)}`;
 
 				if (dbu.length === 2) {
-					nodeInstancePrice = `$${(nodeInstanceRate * dbuFirst).toFixed(2)} - $${(nodeInstanceRate * dbuSecond).toFixed(2)}`;
+					nodeInstancePrice = `$${(nodeInstanceRate * minworkers).toFixed(2)} - $${(nodeInstanceRate * maxWorkers).toFixed(2)}`;
 				} else {
-					nodeInstancePrice = `$${(nodeInstanceRate * dbuFirst).toFixed(2)}`;
+					nodeInstancePrice = `$${(nodeInstanceRate * workers).toFixed(2)}`;
 				}
 			} else {
 				var nodeInstance = awsInstance[0].textContent;
@@ -99,12 +110,12 @@ function addCosts() {
 				var nodeInstanceRate = parseFloat(data[awsInstance[0].textContent]["price"]);
 				var driverInstanceRate = parseFloat(data[awsInstance[0].textContent]["price"]);
 
-				driverInstancePrice = `$${(driverInstanceRate * dbuFirst).toFixed(2)}`;
+				driverInstancePrice = `$${driverInstanceRate.toFixed(2)}`;
 
 				if (dbu.length === 2) {
-					nodeInstancePrice = `$${(nodeInstanceRate * dbuFirst).toFixed(2)} - $${(nodeInstanceRate * dbuSecond).toFixed(2)}`;
+					nodeInstancePrice = `$${(nodeInstanceRate * minworkers).toFixed(2)} - $${(nodeInstanceRate * maxWorkers).toFixed(2)}`;
 				} else {
-					nodeInstancePrice = `$${(nodeInstanceRate * dbuFirst).toFixed(2)}`;
+					nodeInstancePrice = `$${(nodeInstanceRate * workers).toFixed(2)}`;
 				}
 			}
 
