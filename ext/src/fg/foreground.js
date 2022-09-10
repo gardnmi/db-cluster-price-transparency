@@ -165,7 +165,7 @@ function addCosts() {
 			<h2 class="du-bois-light-typography webapp-css-1xj5vnu" style="margin-top: 0px;">
 				AWS Cost/h &nbsp <small>(${region})</small>
 			</h2>
-	
+			
 			<div class="webapp-css-1xp7jxr">
 				<span class="webapp-css-1lwh3lh">Workers ${nodeInstance}: </span>
 				<span class="webapp-css-1d0tddh">${nodeInstancePrice}</span>
@@ -195,7 +195,7 @@ function update() {
 	document.addEventListener("click", () => {
 		var current_url = window.location.toString();
 
-		if (current_url.includes("clusters") && (current_url.includes("configuration") || current_url.includes("edit") || current_url.includes("create"))) {
+		if (current_url.includes("cluster") && (current_url.includes("configuration") || current_url.includes("edit") || current_url.includes("create"))) {
 			if (!document.getElementById("region_select")) {
 				addRegionSelect();
 			}
@@ -217,7 +217,7 @@ function reload() {
 	document.addEventListener("mousemove", () => {
 		var current_url = window.location.toString();
 
-		if (current_url.includes("clusters") && (current_url.includes("configuration") || current_url.includes("edit") || current_url.includes("create"))) {
+		if (current_url.includes("cluster") && (current_url.includes("configuration") || current_url.includes("edit") || current_url.includes("create"))) {
 			if (!document.getElementById("region_select")) {
 				addRegionSelect();
 			}
@@ -292,8 +292,8 @@ function addTypeSelect() {
 chrome.extension.sendMessage({}, function (response) {
 	var extensionReady = setInterval(function () {
 		var current_url = window.location.toString();
-		console.log(current_url);
-		if (current_url.includes("clusters") && (current_url.includes("configuration") || current_url.includes("edit") || current_url.includes("create"))) {
+		// console.log(current_url);
+		if (current_url.includes("cluster") && (current_url.includes("configuration") || current_url.includes("edit") || current_url.includes("create"))) {
 			var readyStateCheckInterval = setInterval(function () {
 				if (document.readyState === "complete") {
 					clearInterval(readyStateCheckInterval);
