@@ -48,20 +48,16 @@ function addCosts() {
 
 	if (document.getElementsByClassName("worker-num fake-static-input")[0]) {
 		workers = parseFloat(document.getElementsByClassName("worker-num fake-static-input")[0].textContent);
-	}
-
-	if (document.getElementsByClassName("min-worker fake-static-input")[0]) {
+	} else if (document.getElementsByClassName("min-worker fake-static-input")[0]) {
 		minWorkers = parseFloat(document.getElementsByClassName("min-worker fake-static-input")[0].textContent);
 		maxWorkers = parseFloat(document.getElementsByClassName("max-worker fake-static-input")[0].textContent);
-	}
-
-	if (document.getElementById("cluster-input--worker")) {
+	} else if (document.getElementById("cluster-input--worker")) {
 		workers = parseFloat(document.getElementById("cluster-input--worker").value);
-	}
-
-	if (document.getElementById("cluster-input--min-worker")) {
+	} else if (document.getElementById("cluster-input--min-worker")) {
 		var minWorkers = parseFloat(document.getElementById("cluster-input--min-worker").value);
 		var maxWorkers = parseFloat(document.getElementById("cluster-input--max-worker").value);
+	} else {
+		workers = 0;
 	}
 
 	if (dbu.length === 2) {
