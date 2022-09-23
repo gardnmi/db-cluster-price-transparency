@@ -43,7 +43,7 @@ const dbu_pricing = JSON.parse(`
 
 function addCosts() {
 	const el = document.getElementsByClassName("webapp-css-15va8q9")[0];
-	var dbu = document.getElementsByClassName("webapp-css-1nlcg28")[0].textContent.split("-");
+	var dbu = document.getElementsByClassName("webapp-css-1nlcg28")[0].textContent.split("–");
 	db_plan = document.getElementById("type_select").value;
 
 	if (document.getElementsByClassName("worker-num fake-static-input")[0]) {
